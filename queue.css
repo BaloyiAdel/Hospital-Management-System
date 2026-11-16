@@ -1,0 +1,795 @@
+
+/* =========================================
+   CAREPOINT - QUEUE MANAGEMENT
+   Navy & Ice Blue Theme
+========================================= */
+
+:root {
+    --queue-navy: #163B65;
+    --queue-dark: #102E50;
+    --queue-blue: #3979B9;
+    --queue-ice: #A9D3F0;
+    --queue-light: #EAF4FC;
+
+    --queue-bg: #F5F9FE;
+    --queue-white: #FFFFFF;
+
+    --queue-text: #26384B;
+    --queue-muted: #718096;
+    --queue-border: #E1EAF3;
+
+    --queue-green: #23845B;
+    --queue-green-bg: #E9F7F0;
+
+    --queue-orange: #A86C19;
+    --queue-orange-bg: #FFF5E5;
+
+    --queue-red: #B83B4B;
+    --queue-red-bg: #FFF0F0;
+
+    --queue-purple: #7660B7;
+    --queue-purple-bg: #F1EDFB;
+
+    --queue-shadow: 0 5px 22px rgba(22, 59, 101, 0.07);
+}
+
+/* =========================================
+   RESET
+========================================= */
+
+.queue-page,
+.queue-page * {
+    box-sizing: border-box;
+}
+
+.queue-page {
+    width: 100%;
+    max-width: 1600px;
+    min-height: 100vh;
+
+    margin: 0 auto;
+    padding: 32px 36px;
+
+    background: var(--queue-bg);
+    color: var(--queue-text);
+
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.queue-page a {
+    text-decoration: none;
+}
+
+/* =========================================
+   PAGE HEADER
+========================================= */
+
+.queue-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+.page-eyebrow {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--queue-blue);
+
+    font-size: 10px;
+    font-weight: 750;
+
+    letter-spacing: 1.2px;
+}
+
+.queue-header h1 {
+    color: var(--queue-navy);
+
+    font-size: 27px;
+    font-weight: 750;
+
+    margin-bottom: 7px;
+}
+
+.queue-header p {
+    color: var(--queue-muted);
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.queue-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.queue-date {
+    padding: 10px 14px;
+
+    background: var(--queue-white);
+    border: 1px solid var(--queue-border);
+
+    border-radius: 8px;
+
+    color: var(--queue-navy);
+
+    font-size: 11px;
+    font-weight: 650;
+}
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.queue-primary-button,
+.queue-secondary-button,
+.queue-add-button,
+.queue-action-button,
+.queue-cancel-button {
+    min-height: 39px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.queue-primary-button,
+.queue-add-button,
+.queue-action-button {
+    background: var(--queue-navy);
+    color: var(--queue-white);
+}
+
+.queue-primary-button:hover,
+.queue-add-button:hover,
+.queue-action-button:hover {
+    background: var(--queue-blue);
+    transform: translateY(-1px);
+}
+
+.queue-secondary-button {
+    background: var(--queue-white);
+
+    border: 1px solid var(--queue-border);
+
+    color: var(--queue-navy);
+}
+
+.queue-secondary-button:hover {
+    background: var(--queue-light);
+    border-color: var(--queue-ice);
+}
+
+.queue-cancel-button {
+    background: var(--queue-red-bg);
+    color: var(--queue-red);
+}
+
+.queue-cancel-button:hover {
+    background: var(--queue-red);
+    color: var(--queue-white);
+}
+
+.complete-button {
+    background: var(--queue-green);
+}
+
+.complete-button:hover {
+    background: #176C48;
+}
+
+.queue-print-link {
+    display: inline-block;
+
+    padding: 8px 10px;
+
+    color: var(--queue-blue);
+
+    font-size: 11px;
+    font-weight: 700;
+
+    border-radius: 6px;
+}
+
+.queue-print-link:hover {
+    background: var(--queue-light);
+}
+
+/* =========================================
+   NOTIFICATION MESSAGES
+========================================= */
+
+.queue-notice {
+    padding: 13px 16px;
+
+    margin-bottom: 20px;
+
+    border-radius: 9px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    line-height: 1.5;
+}
+
+.queue-notice.success {
+    color: var(--queue-green);
+    background: var(--queue-green-bg);
+    border: 1px solid #C9EBDD;
+}
+
+.queue-notice.error {
+    color: var(--queue-red);
+    background: var(--queue-red-bg);
+    border: 1px solid #F2D0D4;
+}
+
+/* =========================================
+   SUMMARY CARDS
+========================================= */
+
+.queue-summary-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 17px;
+
+    margin-bottom: 27px;
+}
+
+.queue-summary-card {
+    min-width: 0;
+
+    padding: 20px;
+
+    background: var(--queue-white);
+
+    border: 1px solid var(--queue-border);
+    border-radius: 13px;
+
+    box-shadow: var(--queue-shadow);
+
+    transition: transform 0.2s ease;
+}
+
+.queue-summary-card:hover {
+    transform: translateY(-3px);
+}
+
+.summary-label {
+    display: block;
+
+    margin-bottom: 15px;
+
+    color: #8A9AAC;
+
+    font-size: 9px;
+    font-weight: 750;
+
+    letter-spacing: 0.8px;
+}
+
+.queue-summary-card strong {
+    display: block;
+
+    color: var(--queue-navy);
+
+    font-size: 30px;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+.queue-summary-card small {
+    display: block;
+
+    margin-top: 8px;
+
+    color: var(--queue-muted);
+
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+/* =========================================
+   CONTENT PANELS
+========================================= */
+
+.queue-panel {
+    width: 100%;
+
+    padding: 24px;
+
+    margin-bottom: 25px;
+
+    background: var(--queue-white);
+
+    border: 1px solid var(--queue-border);
+    border-radius: 14px;
+
+    box-shadow: var(--queue-shadow);
+}
+
+.queue-panel-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    flex-wrap: wrap;
+
+    margin-bottom: 21px;
+}
+
+.queue-panel-heading h2 {
+    color: var(--queue-navy);
+
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.queue-panel-heading p {
+    margin-top: 6px;
+
+    color: var(--queue-muted);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.queue-count {
+    padding: 8px 12px;
+
+    background: var(--queue-light);
+
+    border-radius: 20px;
+
+    color: var(--queue-navy);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+/* =========================================
+   PATIENT SEARCH FORM
+========================================= */
+
+.queue-search-form {
+    display: flex;
+    align-items: flex-end;
+
+    gap: 12px;
+    flex-wrap: wrap;
+
+    padding: 17px;
+
+    background: #F8FBFE;
+
+    border: 1px solid var(--queue-border);
+    border-radius: 10px;
+}
+
+.queue-search-field {
+    flex: 1;
+    min-width: 220px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.queue-search-field label {
+    color: var(--queue-navy);
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.queue-search-field input {
+    width: 100%;
+    min-height: 42px;
+
+    padding: 11px 13px;
+
+    border: 1px solid #D8E3EE;
+    border-radius: 8px;
+
+    outline: none;
+
+    background: var(--queue-white);
+
+    color: var(--queue-text);
+
+    font-family: inherit;
+    font-size: 12px;
+
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.queue-search-field input:focus {
+    border-color: var(--queue-blue);
+
+    box-shadow: 0 0 0 3px rgba(57, 121, 185, 0.10);
+}
+
+.queue-search-field input::placeholder {
+    color: #A0ADBA;
+}
+
+/* =========================================
+   SEARCH RESULTS
+========================================= */
+
+.queue-search-results {
+    margin-top: 25px;
+}
+
+.queue-search-results h3 {
+    margin-bottom: 13px;
+
+    color: var(--queue-navy);
+
+    font-size: 13px;
+    font-weight: 750;
+}
+
+/* =========================================
+   TABLES
+========================================= */
+
+.queue-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--queue-border);
+    border-radius: 10px;
+}
+
+.queue-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    text-align: left;
+
+    white-space: nowrap;
+}
+
+.queue-table thead {
+    background: #F2F7FC;
+}
+
+.queue-table th {
+    padding: 14px 13px;
+
+    color: #61758A;
+
+    font-size: 9px;
+    font-weight: 750;
+
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+
+    border-bottom: 1px solid var(--queue-border);
+}
+
+.queue-table td {
+    padding: 14px 13px;
+
+    color: var(--queue-text);
+
+    font-size: 11px;
+
+    border-bottom: 1px solid #EDF2F7;
+
+    vertical-align: middle;
+}
+
+.queue-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.queue-table tbody tr:hover {
+    background: #FAFCFF;
+}
+
+.queue-table td strong {
+    color: var(--queue-navy);
+    font-weight: 700;
+}
+
+/* =========================================
+   QUEUE NUMBER
+========================================= */
+
+.queue-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 55px;
+
+    padding: 7px 10px;
+
+    background: var(--queue-light);
+
+    border-radius: 7px;
+
+    color: var(--queue-navy);
+
+    font-size: 11px;
+    font-weight: 800;
+}
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.status-badge,
+.file-status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 6px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 750;
+}
+
+.status-badge.waiting {
+    color: var(--queue-orange);
+    background: var(--queue-orange-bg);
+}
+
+.status-badge.called {
+    color: var(--queue-blue);
+    background: var(--queue-light);
+}
+
+.status-badge.in_progress {
+    color: var(--queue-purple);
+    background: var(--queue-purple-bg);
+}
+
+.status-badge.completed {
+    color: var(--queue-green);
+    background: var(--queue-green-bg);
+}
+
+.status-badge.cancelled {
+    color: var(--queue-red);
+    background: var(--queue-red-bg);
+}
+
+.file-status-badge.sent {
+    color: var(--queue-orange);
+    background: var(--queue-orange-bg);
+}
+
+.file-status-badge.received {
+    color: var(--queue-green);
+    background: var(--queue-green-bg);
+}
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.queue-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.queue-actions form {
+    display: inline-flex;
+}
+
+.queue-action-button,
+.queue-cancel-button {
+    min-height: 32px;
+
+    padding: 7px 10px;
+
+    font-size: 10px;
+}
+
+.action-muted {
+    color: #9AA8B6;
+    font-size: 10px;
+}
+
+/* =========================================
+   EMPTY STATES
+========================================= */
+
+.queue-empty {
+    padding: 38px 20px;
+
+    text-align: center;
+
+    background: #F8FBFE;
+
+    border: 1px dashed #D6E3EF;
+    border-radius: 10px;
+}
+
+.queue-empty h3 {
+    margin-bottom: 8px;
+
+    color: var(--queue-navy);
+
+    font-size: 14px;
+}
+
+.queue-empty p {
+    color: var(--queue-muted);
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.queue-empty:not(:has(h3)) {
+    color: var(--queue-muted);
+    font-size: 12px;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.queue-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 12px;
+    flex-wrap: wrap;
+
+    padding: 18px 0;
+
+    border-top: 1px solid var(--queue-border);
+
+    color: #8998A9;
+
+    font-size: 10px;
+}
+
+.queue-footer a {
+    color: var(--queue-blue);
+    font-weight: 700;
+}
+
+.queue-footer a:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .queue-page {
+        padding: 27px 24px;
+    }
+
+    .queue-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+
+    .queue-page {
+        padding: 20px 14px;
+    }
+
+    .queue-header {
+        align-items: flex-start;
+    }
+
+    .queue-header h1 {
+        font-size: 23px;
+    }
+
+    .queue-header-actions {
+        width: 100%;
+    }
+
+    .queue-panel {
+        padding: 16px;
+    }
+
+    .queue-summary-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .queue-summary-card {
+        padding: 15px;
+    }
+
+    .queue-summary-card strong {
+        font-size: 25px;
+    }
+
+    .queue-search-form {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .queue-search-field {
+        min-width: 100%;
+    }
+
+    .queue-search-form button,
+    .queue-search-form a {
+        width: 100%;
+    }
+
+    .queue-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+}
+
+@media (max-width: 380px) {
+
+    .queue-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .queue-header-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .queue-date {
+        text-align: center;
+    }
+
+}
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+.queue-page button:focus-visible,
+.queue-page a:focus-visible,
+.queue-page input:focus-visible {
+    outline: 3px solid var(--queue-ice);
+    outline-offset: 3px;
+}
